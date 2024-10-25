@@ -1,11 +1,20 @@
 package com.pluralsight;
 
-public class UserInterface {
+import java.util.Scanner;
+
+public final class UserInterface {
+    static Scanner scanner = new Scanner(System.in);
     private Dealership dealership;
 
-    public void display() {
-
+    private void init() {
+        dealership = DealershipFileManager.getDealership();
     }
+
+    public void display() {
+        init();
+        MenuHelper.displayMainMenu();
+    }
+
     public void processGetByPriceRequest() {
 
     }

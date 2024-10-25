@@ -1,14 +1,14 @@
 package com.pluralsight;
 
-public class DealershipFileManager {
+public final class DealershipFileManager {
 
-    public DealershipFileManager() {}
+    private DealershipFileManager() {}
 
-    public Dealership getDealership() {
+    public static Dealership getDealership() {
         return null;
     }
 
-    public Dealership saveDealership() {
+    public static Dealership saveDealership() {
         return null;
     }
 
