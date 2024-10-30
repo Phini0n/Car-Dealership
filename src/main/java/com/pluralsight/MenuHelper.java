@@ -3,18 +3,26 @@ package com.pluralsight;
 import java.util.ArrayList;
 
 public final class MenuHelper {
+
+    private static boolean firstRun = true;
+
     private MenuHelper() {}
 
     public static void displayMainMenu() {
-        System.out.println("Welcome to the car dealership");
-        System.out.println("Loaded dealership from: " + DealershipFileManager.getFileLocation());
+        if (firstRun) {
+            System.out.println("Welcome to the car dealership!\n");
+            System.out.println("Loaded dealership info from: " + DealershipFileManager.getFileLocation());
+            System.out.println();
+            firstRun = false;
+        }
         System.out.print(
-            "1) Show All Vehicles\n" +
-            "2) Filter Vehicles\n" +
-            "3) Add a Vehicle\n" +
-            "4) Remove a Vehicle\n" +
-            "99) Exit" +
-            "Enter: "
+                """
+                        1) Show All Vehicles
+                        2) Filter Vehicles
+                        3) Add a Vehicle
+                        4) Remove a Vehicle
+                        99) Exit
+                        Enter:\s"""
         );
     }
 
