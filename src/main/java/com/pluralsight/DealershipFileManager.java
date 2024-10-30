@@ -42,7 +42,7 @@ public final class DealershipFileManager {
                 }
             }
         } catch (Exception e) {
-
+            System.out.println("Error: " + e);
         }
         return null;
     }
