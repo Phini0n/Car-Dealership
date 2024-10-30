@@ -44,13 +44,7 @@ public final class UserInterface {
         }
     }
 
-    private void displayVehicles(ArrayList<Vehicle> vehicles, boolean condition) {
-        for (Vehicle vehicle : vehicles) {
-            if (condition) {
-                System.out.println(vehicle);
-            }
-        }
-    }
+
 
     public void processGetByPriceRequest() {
 
@@ -77,9 +71,7 @@ public final class UserInterface {
     }
 
     public void processGetAllVehicleRequest() {
-        System.out.println();
-        displayVehicles((ArrayList<Vehicle>) dealership.getAllVehicles(), true);
-        System.out.println();
+        MenuHelper.displayVehicles((ArrayList<Vehicle>) dealership.getAllVehicles(), true);
     }
 
     public void processAddVehicleRequest() {

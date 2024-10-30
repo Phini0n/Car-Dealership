@@ -48,9 +48,13 @@ public final class MenuHelper {
     }
 
     // TODO: Remove this if unnecessary
-    public static void displayVehicles(ArrayList<Vehicle> vehicles) {
-        for (Vehicle vehicle : vehicles) {
-            System.out.println(vehicle);
+    public static void displayVehicles(ArrayList<Vehicle> vehicles, boolean condition) {
+        if (condition) {
+            System.out.println();
+            for (Vehicle vehicle : vehicles) {
+                System.out.println(vehicle);
+            }
+            System.out.println();
         }
     }
 }
