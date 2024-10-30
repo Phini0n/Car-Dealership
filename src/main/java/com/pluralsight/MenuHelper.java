@@ -7,12 +7,13 @@ public final class MenuHelper {
 
     public static void displayMainMenu() {
         System.out.println("Welcome to the car dealership");
+        System.out.println("Loaded dealership from: " + DealershipFileManager.getFileLocation());
         System.out.print(
             "1) Show All Vehicles\n" +
             "2) Filter Vehicles\n" +
             "3) Add a Vehicle\n" +
             "4) Remove a Vehicle\n" +
-            "5) Exit" +
+            "99) Exit" +
             "Enter: "
         );
     }
