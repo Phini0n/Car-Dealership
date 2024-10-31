@@ -43,14 +43,11 @@ public final class UserInterface {
                         break;
                 }
             } catch (Exception e) {
-                System.out.println("Error: " + e);
-                System.out.println("Returning to Main Menu");
+                MenuHelper.displayError(e);
                 scanner.nextLine();
             }
         }
     }
-
-
 
     public void processGetByPriceRequest() {
         MenuHelper.displayPriceRequest();
@@ -59,9 +56,9 @@ public final class UserInterface {
             MenuHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByPrice(new BigDecimal(priceRange[0]),
                     new BigDecimal(priceRange[1])));
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            MenuHelper.displayError(e);
+            scanner.nextLine();
         }
-
     }
 
     public void processGetByMakeModelRequest() {

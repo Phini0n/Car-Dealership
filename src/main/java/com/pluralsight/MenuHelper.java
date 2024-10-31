@@ -30,6 +30,12 @@ public final class MenuHelper {
         System.out.println("\nThank you for browsing!");
     }
 
+    // Displays generic error message used by UserInterface
+    public static void displayError(Exception e) {
+        System.out.println("Error: " + e);
+        System.out.println("Returning to Main Menu");
+    }
+
     public static void displayPriceRequest() {
         System.out.println("Please enter your minimum price, followed by a hyphen, then " +
                 "your maximum price (EX. 200.00-3000.00) :");
