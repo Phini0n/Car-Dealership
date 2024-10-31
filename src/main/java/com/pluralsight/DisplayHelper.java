@@ -84,8 +84,11 @@ public final class DisplayHelper {
         }
     }
 
-    public static void displayAddVehicle(int index) {
+    public static void displayAddRemoveVehicle(int index) {
         switch (index) {
+            case -1:
+                System.out.print("Enter the VIN of the vehicle you'd like to remove: ");
+                break;
             case 0:
                 System.out.print("Enter the vehicle VIN: ");
                 break;

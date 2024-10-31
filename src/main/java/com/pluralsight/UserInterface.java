@@ -52,7 +52,7 @@ public final class UserInterface {
                             processAddVehicleRequest();
                             break;
                         case 4: // Remove a Vehicle
-                            System.out.println("Remove Vehicle NYI");
+                            processRemoveVehicleRequest();
                             break;
                         case 99: // Exit
                             DisplayHelper.displayGoodbye();
@@ -181,31 +181,31 @@ public final class UserInterface {
     private void processAddVehicleRequest() {
         try {
             // VIN
-            DisplayHelper.displayAddVehicle(0);
+            DisplayHelper.displayAddRemoveVehicle(0);
             int vin = scanner.nextInt();
             scanner.nextLine();
             // Year
-            DisplayHelper.displayAddVehicle(1);
+            DisplayHelper.displayAddRemoveVehicle(1);
             int year = scanner.nextInt();
             scanner.nextLine();
             // Make
-            DisplayHelper.displayAddVehicle(2);
+            DisplayHelper.displayAddRemoveVehicle(2);
             String make = scanner.nextLine();
             // Model
-            DisplayHelper.displayAddVehicle(3);
+            DisplayHelper.displayAddRemoveVehicle(3);
             String model = scanner.nextLine();
             // Type
-            DisplayHelper.displayAddVehicle(4);
+            DisplayHelper.displayAddRemoveVehicle(4);
             String type = scanner.nextLine();
             // Color
-            DisplayHelper.displayAddVehicle(5);
+            DisplayHelper.displayAddRemoveVehicle(5);
             String color = scanner.nextLine();
             // Odometer
-            DisplayHelper.displayAddVehicle(6);
+            DisplayHelper.displayAddRemoveVehicle(6);
             int odometer = scanner.nextInt();
             scanner.nextLine();
             // Price -- Setting it to two decimal places
-            DisplayHelper.displayAddVehicle(7);
+            DisplayHelper.displayAddRemoveVehicle(7);
             BigDecimal price = new BigDecimal(scanner.nextLine()).setScale(2, RoundingMode.HALF_UP);
 
             Vehicle newVehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
@@ -217,6 +217,8 @@ public final class UserInterface {
     }
 
     private void processRemoveVehicleRequest(){
-
+        DisplayHelper.displayAddRemoveVehicle(-1);
+        int vin = scanner.nextInt();
+        dealership.removeVehicle(vin);
     }
 }
