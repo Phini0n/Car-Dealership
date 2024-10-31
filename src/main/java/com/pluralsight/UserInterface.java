@@ -40,21 +40,23 @@ public final class UserInterface {
                     scanner.nextLine();
                     // Passing to requests
                     switch (choice) {
-                        case 1:
+                        case 1: // Show All Vehicles
                             processGetAllVehicleRequest();
                             break;
-                        case 2:
+                        case 2: // Filter Vehicles
                             choice = exitValue;
                             handleDisplay(Menu.MENU_FILTER); // Recursively makes the Filter Menu
                             break;
-                        case 3:
+                        case 3: // Add a Vehicle
                             System.out.println("Add Vehicle NYI");
                             break;
-                        case 4:
+                        case 4: // Remove a Vehicle
                             System.out.println("Remove Vehicle NYI");
                             break;
-                        case 99:
+                        case 99: // Exit
                             DisplayHelper.displayGoodbye();
+                            scanner.close();
+                            System.exit(0);
                             break;
                         default:
                             DisplayHelper.invalidEntry();
@@ -77,24 +79,24 @@ public final class UserInterface {
                     scanner.nextLine();
                     // Passing to requests
                     switch (choice) {
-                        case 1:
+                        case 1: // Price Range
                             processGetByPriceRequest();
                             break;
-                        case 2:
+                        case 2: // Make / Model
                             processGetByMakeModelRequest();
                             break;
-                        case 3:
+                        case 3: // Year Range
                             processGetByYearRequest();
                             break;
-                        case 4:
+                        case 4: // Color
                             processGetByColorRequest();
                             break;
-                        case 5:
+                        case 5: // Mileage Range
                             processGetByMileageRequest();
                             break;
-                        case 6:
+                        case 6: // Vehicle Type (car, truck, SUV, van)
                             processGetByVehicleTypeRequest();
-                        case 7:
+                        case 7: // Return to Main Menu
                             choice = exitValue;
                             handleDisplay(Menu.MENU_MAIN); // Recursively goes into the main meu
                         default:
@@ -160,6 +162,7 @@ public final class UserInterface {
 
     private void processGetByVehicleTypeRequest() {
         DisplayHelper.displayFilterRequest(6);
+        DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByType(scanner.nextLine()));
     }
 
     private void processGetAllVehicleRequest() {

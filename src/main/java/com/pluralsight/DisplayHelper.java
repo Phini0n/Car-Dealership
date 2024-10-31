@@ -76,14 +76,10 @@ public final class DisplayHelper {
             case 5:
                 System.out.print("Please enter the span of mileage you want to filter by (EX. \"8000-12000\"): ");
                 break;
+            case 6:
+                System.out.print("Please enter the vehicle type (EX. sedan, SUV, etc.): ");
         }
     }
-
-    public static void displayPriceRequest() {
-        System.out.print("Please enter your minimum price, followed by a hyphen, then " +
-                "your maximum price (EX. 200.00-3000.00): ");
-    }
-
 
     public static void displayAddVehicle() {
         System.out.print("Would you like to add a vehicle?");

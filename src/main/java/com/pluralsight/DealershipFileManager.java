@@ -39,6 +39,8 @@ public final class DealershipFileManager {
                     ));
                 }
             }
+
+            bufferedReader.close();
             return dealership;
         } catch (Exception e) {
             System.out.println("Error: " + e);

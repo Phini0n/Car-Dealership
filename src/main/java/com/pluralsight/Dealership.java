@@ -77,7 +77,7 @@ public class Dealership {
     public List<Vehicle> getVehiclesByType(String vehicleType) {
         List<Vehicle> filtered = new ArrayList<Vehicle>();
         for (Vehicle vehicle : inventory) {
-            if (vehicle.getColor().equalsIgnoreCase(vehicleType)) {
+            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
                 filtered.add(vehicle);
             }
         }
