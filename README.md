@@ -66,22 +66,22 @@ and the information needs to follow the format:
 
 ## Demo
 ### The Main Menu
-![Main Menu](imgs/Main Menu.PNG)
+![Main-Menu](imgs/Main-Menu.PNG)
 
 ### The Filter Menu
-![Filter Menu](imgs/Filter Menu.PNG)
+![Filter-Menu](imgs/Filter-Menu.PNG)
 
 ### Show All Vehicles
-![Show All Vehicles](imgs/Show All Vehicles.PNG)
+![Show-All-Vehicles](imgs/Show-All-Vehicles.PNG)
 
 ## Unique Feature: Menu Recursion
 In order to create the separate menus I employed the use of Enums and recursion.
 
-Main Menu:
-![Recursion Usage 1](imgs/Recursion1.PNG)
+### Main Menu:
+![Recursion-Usage 1](imgs/Recursion1.PNG)
 
-Filter Menu:
-![Recursion Usage 2](imgs/Recursion2.PNG)
+### Filter Menu:
+![Recursion-Usage 2](imgs/Recursion2.PNG)
 
 
 ## Future Work
