@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -48,7 +49,7 @@ public final class UserInterface {
                             handleDisplay(Menu.MENU_FILTER); // Recursively makes the Filter Menu
                             break;
                         case 3: // Add a Vehicle
-                            System.out.println("Add Vehicle NYI");
+                            processAddVehicleRequest();
                             break;
                         case 4: // Remove a Vehicle
                             System.out.println("Remove Vehicle NYI");
@@ -178,7 +179,41 @@ public final class UserInterface {
     }
 
     private void processAddVehicleRequest() {
+        try {
+            // VIN
+            DisplayHelper.displayAddVehicle(0);
+            int vin = scanner.nextInt();
+            scanner.nextLine();
+            // Year
+            DisplayHelper.displayAddVehicle(1);
+            int year = scanner.nextInt();
+            scanner.nextLine();
+            // Make
+            DisplayHelper.displayAddVehicle(2);
+            String make = scanner.nextLine();
+            // Model
+            DisplayHelper.displayAddVehicle(3);
+            String model = scanner.nextLine();
+            // Type
+            DisplayHelper.displayAddVehicle(4);
+            String type = scanner.nextLine();
+            // Color
+            DisplayHelper.displayAddVehicle(5);
+            String color = scanner.nextLine();
+            // Odometer
+            DisplayHelper.displayAddVehicle(6);
+            int odometer = scanner.nextInt();
+            scanner.nextLine();
+            // Price -- Setting it to two decimal places
+            DisplayHelper.displayAddVehicle(7);
+            BigDecimal price = new BigDecimal(scanner.nextLine()).setScale(2, RoundingMode.HALF_UP);
 
+            Vehicle newVehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
+
+            dealership.addVehicle(newVehicle);
+        } catch (Exception e) {
+            DisplayHelper.displayError(e);
+        }
     }
 
     private void processRemoveVehicleRequest(){

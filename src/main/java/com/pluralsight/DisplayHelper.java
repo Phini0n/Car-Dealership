@@ -84,8 +84,33 @@ public final class DisplayHelper {
         }
     }
 
-    public static void displayAddVehicle() {
-        System.out.print("Would you like to add a vehicle?");
+    public static void displayAddVehicle(int index) {
+        switch (index) {
+            case 0:
+                System.out.print("Enter the vehicle VIN: ");
+                break;
+            case 1:
+                System.out.print("Enter the year: ");
+                break;
+            case 2:
+                System.out.print("Enter the make: ");
+                break;
+            case 3:
+                System.out.print("Enter the model: ");
+                break;
+            case 4:
+                System.out.print("Enter the type of car: ");
+                break;
+            case 5:
+                System.out.print("Enter the color of the car: ");
+                break;
+            case 6:
+                System.out.print("Enter the odometer reading: ");
+                break;
+            case 7:
+                System.out.print("Enter the price: ");
+                break;
+        }
     }
 
     public static void displayRemoveVehicle() {
