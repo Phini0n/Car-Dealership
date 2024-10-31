@@ -124,7 +124,7 @@ public final class DisplayHelper {
     public static void displayVehicles(ArrayList<Vehicle> vehicles) {
         System.out.println();
         System.out.println("Vehicles:");
-        System.out.println("__________________");
+        System.out.println("VIN|YEAR|MAKE|MODEL|TYPE|COLOR|ODOMETER|PRICE");
         for (Vehicle vehicle : vehicles) {
             System.out.println(vehicle);
         }

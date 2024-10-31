@@ -43,13 +43,25 @@ public final class DealershipFileManager {
             bufferedReader.close();
             return dealership;
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            DisplayHelper.displayError(e);
         }
         return null;
     }
 
     public static void saveDealership(Dealership dealership) {
-
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE));
+            bufferedWriter.write(dealership.toString());
+            bufferedWriter.newLine();
+            for (Vehicle vehicle : dealership.getAllVehicles()) {
+                bufferedWriter.write(vehicle.toString());
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (Exception e) {
+            DisplayHelper.displayError(e);
+        }
     }
 
     public static String getFileLocation() {

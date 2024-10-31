@@ -45,7 +45,6 @@ public final class UserInterface {
                             processGetAllVehicleRequest();
                             break;
                         case 2: // Filter Vehicles
-                            choice = exitValue;
                             handleDisplay(Menu.MENU_FILTER); // Recursively makes the Filter Menu
                             break;
                         case 3: // Add a Vehicle
@@ -98,7 +97,6 @@ public final class UserInterface {
                         case 6: // Vehicle Type (car, truck, SUV, van)
                             processGetByVehicleTypeRequest();
                         case 7: // Return to Main Menu
-                            choice = exitValue;
                             handleDisplay(Menu.MENU_MAIN); // Recursively goes into the main meu
                         default:
                             DisplayHelper.invalidEntry();
@@ -214,11 +212,13 @@ public final class UserInterface {
         } catch (Exception e) {
             DisplayHelper.displayError(e);
         }
+        DealershipFileManager.saveDealership(dealership);
     }
 
     private void processRemoveVehicleRequest(){
         DisplayHelper.displayAddRemoveVehicle(-1);
         int vin = scanner.nextInt();
         dealership.removeVehicle(vin);
+        DealershipFileManager.saveDealership(dealership);
     }
 }
