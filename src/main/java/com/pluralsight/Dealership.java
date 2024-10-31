@@ -32,26 +32,38 @@ public class Dealership {
 
     public List<Vehicle> getVehiclesByPrice(BigDecimal min, BigDecimal max) {
         List<Vehicle> filtered = new ArrayList<Vehicle>();
-        for (Vehicle vehicles : inventory) {
-            if (vehicles.getPrice().compareTo(min) >= 0 && vehicles.getPrice().compareTo(max) <= 0 ) {
-                filtered.add(vehicles);
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getPrice().compareTo(min) >= 0 && vehicle.getPrice().compareTo(max) <= 0 ) {
+                filtered.add(vehicle);
             }
         }
         return filtered;
     }
 
     public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
+        List<Vehicle> filtered = new ArrayList<Vehicle>();
         return null;
     }
 
     public List<Vehicle> getVehiclesByYear(int min, int max) {
-        return null;
+        List<Vehicle> filtered = new ArrayList<Vehicle>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getYear() >= min && vehicle.getYear() <= max) {
+                filtered.add(vehicle);
+            }
+        }
+        return filtered;
     }
 
     public List<Vehicle> getVehiclesByColor(String color) {
-        return null;
+        List<Vehicle> filtered = new ArrayList<Vehicle>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getColor().equalsIgnoreCase(color)) {
+                filtered.add(vehicle);
+            }
+        }
+        return filtered;
     }
-
 
     // TODO: Look at the data-type used here.
     public List<Vehicle> getVehiclesByMileage(int min, int max) {

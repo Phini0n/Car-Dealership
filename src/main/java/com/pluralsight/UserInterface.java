@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public final class UserInterface {
-    static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     private Dealership dealership;
 
     private enum Menu {
@@ -29,6 +29,7 @@ public final class UserInterface {
         int choice = -1;
         int exitValue = 0; // Value that exits the selected menu
 
+        // MAIN MENU
         if (menuType == Menu.MENU_MAIN) {
             exitValue = 99;
             // Main Menu Switch Case
@@ -43,6 +44,7 @@ public final class UserInterface {
                             processGetAllVehicleRequest();
                             break;
                         case 2:
+                            choice = exitValue;
                             handleDisplay(Menu.MENU_FILTER); // Recursively makes the Filter Menu
                             break;
                         case 3:
@@ -63,6 +65,8 @@ public final class UserInterface {
                     scanner.nextLine();
                 }
             }
+
+        // FILTER MENU
         } else if (menuType == Menu.MENU_FILTER) {
             exitValue = 7;
             //Filter Menu Switch Case
@@ -91,7 +95,8 @@ public final class UserInterface {
                         case 6:
                             processGetByVehicleTypeRequest();
                         case 7:
-                            handleDisplay(Menu.MENU_MAIN);
+                            choice = exitValue;
+                            handleDisplay(Menu.MENU_MAIN); // Recursively goes into the main meu
                         default:
                             DisplayHelper.invalidEntry();
                             break;
@@ -102,13 +107,10 @@ public final class UserInterface {
                 }
             }
         }
-
-
-
     }
 
-    public void processGetByPriceRequest() {
-        DisplayHelper.displayPriceRequest();
+    private void processGetByPriceRequest() {
+        DisplayHelper.displayFilterRequest(1); // Displays filter request for price range.
         String[] priceRange = scanner.nextLine().split("-");
         try {
             DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByPrice(
@@ -120,35 +122,45 @@ public final class UserInterface {
         }
     }
 
-    public void processGetByMakeModelRequest() {
+    private void processGetByMakeModelRequest() {
 
     }
 
-    public void processGetByYearRequest() {
+    private void processGetByYearRequest() {
+        DisplayHelper.displayFilterRequest(3);
+        String[] yearRange = scanner.nextLine().split("-");
+        try {
+            DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByYear(
+                    Integer.parseInt(yearRange[0]),
+                    Integer.parseInt(yearRange[1])));
+        } catch (Exception e) {
+            DisplayHelper.displayError(e);
+            scanner.nextLine();
+        }
+    }
+
+    private void processGetByColorRequest() {
+        DisplayHelper.displayFilterRequest(4); // Displays filter request for color.
+        DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByColor(scanner.nextLine()));
+    }
+
+    private void processGetByMileageRequest() {
 
     }
 
-    public void processGetByColorRequest() {
-
+    private void processGetByVehicleTypeRequest() {
+        DisplayHelper.displayFilterRequest(6);
     }
 
-    public void processGetByMileageRequest() {
-
-    }
-
-    public void processGetByVehicleTypeRequest() {
-
-    }
-
-    public void processGetAllVehicleRequest() {
+    private void processGetAllVehicleRequest() {
         DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getAllVehicles());
     }
 
-    public void processAddVehicleRequest() {
+    private void processAddVehicleRequest() {
 
     }
 
-    public void processRemoveVehicleRequest(){
+    private void processRemoveVehicleRequest(){
 
     }
 }

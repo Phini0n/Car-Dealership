@@ -21,6 +21,7 @@ public final class DisplayHelper {
         System.out.print(
                 """
                         
+                        Main Menu
                         1) Show All Vehicles
                         2) Filter Vehicles
                         3) Add a Vehicle
@@ -34,7 +35,7 @@ public final class DisplayHelper {
         System.out.print(
                 """
                         
-                        Filter by:
+                        Filter Menu
                         1) Price Range
                         2) Make / Model
                         3) Year Range
@@ -58,6 +59,21 @@ public final class DisplayHelper {
 
     public static void invalidEntry() {
         System.out.println("\nInvalid choice!");
+    }
+
+    public static void displayFilterRequest(int filter) {
+        switch (filter) {
+            case 1:
+                System.out.print("Please enter your minimum price, followed by a hyphen, then " +
+                        "your maximum price (EX. \"200.00-3000.00\"}): ");
+                break;
+            case 3:
+                System.out.print("Please enter the span of years you want to filter by using a hyphen (EX. \"2001-2020\"): ");
+                break;
+            case 4:
+                System.out.print("Please enter the color you want to filter by: ");
+                break;
+        }
     }
 
     public static void displayPriceRequest() {
