@@ -67,6 +67,9 @@ public final class DisplayHelper {
                 System.out.print("Please enter your minimum price, followed by a hyphen, then " +
                         "your maximum price (EX. \"200.00-3000.00\"}): ");
                 break;
+            case 2:
+                System.out.print("Please enter your make followed by your model (EX. Toyota Camry): ");
+                break;
             case 3:
                 System.out.print("Please enter the span of years you want to filter by using a hyphen (EX. \"2001-2020\"): ");
                 break;

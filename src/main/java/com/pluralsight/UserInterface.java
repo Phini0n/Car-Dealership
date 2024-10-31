@@ -125,14 +125,22 @@ public final class UserInterface {
     }
 
     private void processGetByMakeModelRequest() {
-
+        DisplayHelper.displayFilterRequest(2);
+        try {
+            String[] makeModel = scanner.nextLine().split(" ");
+            DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByMakeModel(
+                    makeModel[0],
+                    makeModel[1]));
+        } catch (Exception e) {
+            DisplayHelper.displayError(e);
+            scanner.nextLine();
+        }
     }
-
 
     private void processGetByYearRequest() {
         DisplayHelper.displayFilterRequest(3);
-        String[] yearRange = scanner.nextLine().split("-");
         try {
+            String[] yearRange = scanner.nextLine().split("-");
             DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByYear(
                     Integer.parseInt(yearRange[0]),
                     Integer.parseInt(yearRange[1])));
@@ -149,8 +157,8 @@ public final class UserInterface {
 
     private void processGetByMileageRequest() {
         DisplayHelper.displayFilterRequest(5);
-        String[] odometerRange = scanner.nextLine().split("-");
         try {
+            String[] odometerRange = scanner.nextLine().split("-");
             DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByMileage(
                     Integer.parseInt(odometerRange[0]),
                     Integer.parseInt(odometerRange[1])));
