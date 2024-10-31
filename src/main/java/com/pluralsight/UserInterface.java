@@ -97,7 +97,7 @@ public final class UserInterface {
                         case 6: // Vehicle Type (car, truck, SUV, van)
                             processGetByVehicleTypeRequest();
                         case 7: // Return to Main Menu
-                            handleDisplay(Menu.MENU_MAIN); // Recursively goes into the main meu
+                            handleDisplay(Menu.MENU_MAIN); // Recursively goes into the main menu
                         default:
                             DisplayHelper.invalidEntry();
                             break;
