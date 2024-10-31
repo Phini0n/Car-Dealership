@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.math.BigDecimal;
 
 public final class DealershipFileManager {
@@ -48,8 +46,8 @@ public final class DealershipFileManager {
         return null;
     }
 
-    public static Dealership saveDealership() {
-        return null;
+    public static void saveDealership(Dealership dealership) {
+
     }
 
     public static String getFileLocation() {

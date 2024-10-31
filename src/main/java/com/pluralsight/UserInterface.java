@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import java.awt.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,26 +20,32 @@ public final class UserInterface {
         int choice = -1;
         while (choice != 99) {
             MenuHelper.displayMainMenu();
-            choice = scanner.nextInt();
-            scanner.nextLine();
-
-            // Passing to requests
-            switch (choice) {
-                case 1:
-                    processGetAllVehicleRequest();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 99:
-                    System.out.println("\nThank you for browsing!");
-                    break;
-                default:
-                    System.out.println("\nInvalid choice!");
-                    break;
+            try {
+                choice = scanner.nextInt();
+                scanner.nextLine();
+                // Passing to requests
+                switch (choice) {
+                    case 1:
+                        processGetAllVehicleRequest();
+                        break;
+                    case 2:
+                        processGetByPriceRequest();
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 99:
+                        MenuHelper.displayGoodbye();
+                        break;
+                    default:
+                        System.out.println("\nInvalid choice!");
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println("Error: " + e);
+                System.out.println("Returning to Main Menu");
+                scanner.nextLine();
             }
         }
     }
@@ -47,6 +53,14 @@ public final class UserInterface {
 
 
     public void processGetByPriceRequest() {
+        MenuHelper.displayPriceRequest();
+        String[] priceRange = scanner.nextLine().split("-");
+        try {
+            MenuHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByPrice(new BigDecimal(priceRange[0]),
+                    new BigDecimal(priceRange[1])));
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
 
     }
 
@@ -71,7 +85,7 @@ public final class UserInterface {
     }
 
     public void processGetAllVehicleRequest() {
-        MenuHelper.displayVehicles((ArrayList<Vehicle>) dealership.getAllVehicles(), true);
+        MenuHelper.displayVehicles((ArrayList<Vehicle>) dealership.getAllVehicles());
     }
 
     public void processAddVehicleRequest() {

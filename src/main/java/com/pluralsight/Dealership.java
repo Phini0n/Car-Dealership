@@ -9,7 +9,7 @@ public class Dealership {
     private String address;
     private String phone;
 
-    ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
+    List<Vehicle> inventory = new ArrayList<Vehicle>();
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
@@ -31,7 +31,13 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByPrice(BigDecimal min, BigDecimal max) {
-        return null;
+        List<Vehicle> filtered = new ArrayList<Vehicle>();
+        for (Vehicle vehicles : inventory) {
+            if (vehicles.getPrice().compareTo(min) >= 0 && vehicles.getPrice().compareTo(max) <= 0 ) {
+                filtered.add(vehicles);
+            }
+        }
+        return filtered;
     }
 
     public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
@@ -54,5 +60,30 @@ public class Dealership {
 
     public List<Vehicle> getVehiclesByType(String vehicleType) {
         return null;
+    }
+
+    // Getters & Setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

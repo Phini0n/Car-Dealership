@@ -26,7 +26,16 @@ public final class MenuHelper {
         );
     }
 
-    public static void showFilterMenu() {
+    public static void displayGoodbye() {
+        System.out.println("\nThank you for browsing!");
+    }
+
+    public static void displayPriceRequest() {
+        System.out.println("Please enter your minimum price, followed by a hyphen, then " +
+                "your maximum price (EX. 200.00-3000.00) :");
+    }
+
+    public static void displayFilterMenu() {
         System.out.print(
                 "Filter by:\n" +
                 "1) Price Range\n" +
@@ -48,13 +57,11 @@ public final class MenuHelper {
     }
 
     // TODO: Remove this if unnecessary
-    public static void displayVehicles(ArrayList<Vehicle> vehicles, boolean condition) {
-        if (condition) {
+    public static void displayVehicles(ArrayList<Vehicle> vehicles) {
             System.out.println();
             for (Vehicle vehicle : vehicles) {
                 System.out.println(vehicle);
             }
             System.out.println();
-        }
     }
 }
