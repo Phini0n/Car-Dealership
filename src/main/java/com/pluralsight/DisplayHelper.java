@@ -73,6 +73,9 @@ public final class DisplayHelper {
             case 4:
                 System.out.print("Please enter the color you want to filter by: ");
                 break;
+            case 5:
+                System.out.print("Please enter the span of mileage you want to filter by (EX. \"8000-12000\"): ");
+                break;
         }
     }
 

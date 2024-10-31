@@ -126,7 +126,7 @@ public final class UserInterface {
 
     }
 
-    //Comment
+
     private void processGetByYearRequest() {
         DisplayHelper.displayFilterRequest(3);
         String[] yearRange = scanner.nextLine().split("-");
@@ -146,7 +146,16 @@ public final class UserInterface {
     }
 
     private void processGetByMileageRequest() {
-
+        DisplayHelper.displayFilterRequest(5);
+        String[] odometerRange = scanner.nextLine().split("-");
+        try {
+            DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByMileage(
+                    Integer.parseInt(odometerRange[0]),
+                    Integer.parseInt(odometerRange[1])));
+        } catch (Exception e) {
+            DisplayHelper.displayError(e);
+            scanner.nextLine();
+        }
     }
 
     private void processGetByVehicleTypeRequest() {

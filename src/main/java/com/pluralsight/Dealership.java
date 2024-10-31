@@ -41,7 +41,6 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
-        List<Vehicle> filtered = new ArrayList<Vehicle>();
         return null;
     }
 
@@ -65,13 +64,24 @@ public class Dealership {
         return filtered;
     }
 
-    // TODO: Look at the data-type used here.
     public List<Vehicle> getVehiclesByMileage(int min, int max) {
-        return null;
+        List<Vehicle> filtered = new ArrayList<Vehicle>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max) {
+                filtered.add(vehicle);
+            }
+        }
+        return filtered;
     }
 
     public List<Vehicle> getVehiclesByType(String vehicleType) {
-        return null;
+        List<Vehicle> filtered = new ArrayList<Vehicle>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getColor().equalsIgnoreCase(vehicleType)) {
+                filtered.add(vehicle);
+            }
+        }
+        return filtered;
     }
 
     // Getters & Setters
