@@ -8,6 +8,11 @@ public final class UserInterface {
     static Scanner scanner = new Scanner(System.in);
     private Dealership dealership;
 
+    private enum Menu {
+        MENU_MAIN,
+        MENU_FILTER
+    }
+
     private void init() {
         dealership = DealershipFileManager.getDealership();
     }
@@ -16,47 +21,101 @@ public final class UserInterface {
         // Initialize dealership
         init();
 
-        // Main Menu Display
+        // Menu Display
+        handleDisplay(Menu.MENU_MAIN);
+    }
+
+    private void handleDisplay(Menu menuType) {
         int choice = -1;
-        while (choice != 99) {
-            MenuHelper.displayMainMenu();
-            try {
-                choice = scanner.nextInt();
-                scanner.nextLine();
-                // Passing to requests
-                switch (choice) {
-                    case 1:
-                        processGetAllVehicleRequest();
-                        break;
-                    case 2:
-                        processGetByPriceRequest();
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 99:
-                        MenuHelper.displayGoodbye();
-                        break;
-                    default:
-                        System.out.println("\nInvalid choice!");
-                        break;
+        int exitValue = 0; // Value that exits the selected menu
+
+        if (menuType == Menu.MENU_MAIN) {
+            exitValue = 99;
+            // Main Menu Switch Case
+            while (choice != exitValue) {
+                try {
+                    DisplayHelper.displayMainMenu(dealership);
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
+                    // Passing to requests
+                    switch (choice) {
+                        case 1:
+                            processGetAllVehicleRequest();
+                            break;
+                        case 2:
+                            handleDisplay(Menu.MENU_FILTER); // Recursively makes the Filter Menu
+                            break;
+                        case 3:
+                            System.out.println("Add Vehicle NYI");
+                            break;
+                        case 4:
+                            System.out.println("Remove Vehicle NYI");
+                            break;
+                        case 99:
+                            DisplayHelper.displayGoodbye();
+                            break;
+                        default:
+                            DisplayHelper.invalidEntry();
+                            break;
+                    }
+                } catch (Exception e) {
+                    DisplayHelper.displayError(e);
+                    scanner.nextLine();
                 }
-            } catch (Exception e) {
-                MenuHelper.displayError(e);
-                scanner.nextLine();
+            }
+        } else if (menuType == Menu.MENU_FILTER) {
+            exitValue = 7;
+            //Filter Menu Switch Case
+            while (choice != exitValue) {
+                DisplayHelper.displayFilterMenu();
+                try {
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
+                    // Passing to requests
+                    switch (choice) {
+                        case 1:
+                            processGetByPriceRequest();
+                            break;
+                        case 2:
+                            processGetByMakeModelRequest();
+                            break;
+                        case 3:
+                            processGetByYearRequest();
+                            break;
+                        case 4:
+                            processGetByColorRequest();
+                            break;
+                        case 5:
+                            processGetByMileageRequest();
+                            break;
+                        case 6:
+                            processGetByVehicleTypeRequest();
+                        case 7:
+                            handleDisplay(Menu.MENU_MAIN);
+                        default:
+                            DisplayHelper.invalidEntry();
+                            break;
+                    }
+                } catch (Exception e) {
+                    DisplayHelper.displayError(e);
+                    scanner.nextLine();
+                }
             }
         }
+
+
+
     }
 
     public void processGetByPriceRequest() {
-        MenuHelper.displayPriceRequest();
+        DisplayHelper.displayPriceRequest();
         String[] priceRange = scanner.nextLine().split("-");
         try {
-            MenuHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByPrice(new BigDecimal(priceRange[0]),
+            DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getVehiclesByPrice(
+                    new BigDecimal(priceRange[0]),
                     new BigDecimal(priceRange[1])));
         } catch (Exception e) {
-            MenuHelper.displayError(e);
+            DisplayHelper.displayError(e);
             scanner.nextLine();
         }
     }
@@ -82,7 +141,7 @@ public final class UserInterface {
     }
 
     public void processGetAllVehicleRequest() {
-        MenuHelper.displayVehicles((ArrayList<Vehicle>) dealership.getAllVehicles());
+        DisplayHelper.displayVehicles((ArrayList<Vehicle>) dealership.getAllVehicles());
     }
 
     public void processAddVehicleRequest() {
