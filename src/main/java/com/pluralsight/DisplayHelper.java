@@ -116,6 +116,22 @@ public final class DisplayHelper {
         }
     }
 
+    public static void vehicleConfirmation(boolean removed, Vehicle vehicle) {
+        if (!removed) {
+            System.out.println(vehicle.getVin() + " was added successfully!");
+        } else {
+            System.out.println(" was removed successfully!");
+        }
+    }
+
+    public static void vehicleConfirmation(boolean removed, int vin) {
+        if (!removed) {
+            System.out.println(vin + " was added successfully!");
+        } else {
+            System.out.println(vin + " was removed successfully!");
+        }
+    }
+
     public static void displayRemoveVehicle() {
         System.out.print("Would you like to remove a vehicle?");
     }

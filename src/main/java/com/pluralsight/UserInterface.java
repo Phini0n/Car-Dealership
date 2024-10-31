@@ -209,6 +209,8 @@ public final class UserInterface {
             Vehicle newVehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
 
             dealership.addVehicle(newVehicle);
+
+            DisplayHelper.vehicleConfirmation(false, newVehicle);
         } catch (Exception e) {
             DisplayHelper.displayError(e);
         }
@@ -216,9 +218,15 @@ public final class UserInterface {
     }
 
     private void processRemoveVehicleRequest(){
-        DisplayHelper.displayAddRemoveVehicle(-1);
-        int vin = scanner.nextInt();
-        dealership.removeVehicle(vin);
-        DealershipFileManager.saveDealership(dealership);
+        try {
+            DisplayHelper.displayAddRemoveVehicle(-1);
+            int vin = scanner.nextInt();
+            dealership.removeVehicle(vin);
+            DealershipFileManager.saveDealership(dealership);
+
+            DisplayHelper.vehicleConfirmation(true, vin);
+        } catch (Exception e) {
+            DisplayHelper.displayError(e);
+        }
     }
 }
